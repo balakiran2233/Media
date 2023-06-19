@@ -1,0 +1,64 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <style media="screen">
+    h1{
+      color: maroon;
+      text-shadow: 0px 0px 5px blue;
+    }
+  </style>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="messages">
+      {% if messages %}
+      {% for message in messages %}
+      <p class="alert alert-{{ message.tags }} text-center">
+        {{ message }}
+      </p>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="container-fluid">
+      <h1 class="text-center font-weight-bold">NTH-Social Media Project</h1>
+      <div class="row">
+          {% for i in articles %}
+            <div class="col-md-6">
+            <div class="img-thumbnail mt-2">
+            <a href="{{ i.get_absolute_url }}">{{i.title|capfirst}}</a>  <small style="float:right;">{{i.created_date}}</small><br>
+            Author: {{i.author|capfirst}}<br>
+            {{i.body}}
+            </div>
+          </div>
+          {% empty %}
+          <h2>The Article is not Available belongs to {{ request.GET.query }}</h2>
+          {% endfor %}
+        </div>
+      </div>
+      <br>
+    <div class="container-fluid">
+      <ul class="pagination">
+        {% if articles.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page= {{ articles.previous_page_number }}"> &laquo;</a>
+          </li>
+          {% endif %}
+          {% for p in articles.paginator.page_range %}
+            {% if articles.number == p %}
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ p }}">{{ p }}></a>
+          </li>
+          {% endif %}
+        {% endfor %}
+        {% if articles.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page= {{ articles.next_page_number }}"> &raquo;</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </body>
+</html>

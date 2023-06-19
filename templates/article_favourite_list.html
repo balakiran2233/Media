@@ -1,0 +1,32 @@
+{% include 'cdnlines.html '%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+    h1{
+      color: blue;
+      text-shadow: 0px 0px 5px maroon;
+    }
+  </style>
+  <body>
+    {% block content %}
+    <h1 class="text-center font-weight-bold">My Favourite Article</h1>
+    <div class="container-fluid">
+      <div class="row">
+          {% for article in favourite_articles %}
+            <div class="col-md-6">
+            <div class="img-thumbnail mt-2">
+      <a href="{{ article.get_absolute_url }}">{{article.title|capfirst}}</a>  <small style="float:right;">{{article.created_date}}</small><br>
+            Author: {{article.author|capfirst}}<br>
+            {{article.body}}
+            </div>
+            <br>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endblock %}
+  </body>
+</html>

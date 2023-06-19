@@ -1,0 +1,28 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <style media="screen">
+    input[value]{
+      margin-top: 10px;
+    }
+  </style>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="offset-md-3 col-md-4">
+          <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <center>
+            <input type="submit" value="Register" class="btn btn-lg btn-outline-primary">
+            <input type="reset" value="Clear" class="btn btn-lg btn-outline-secondary">
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

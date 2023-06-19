@@ -1,0 +1,5 @@
+{% for i in article.images_set.all %}
+<div class="col-md-3">
+  <img src="{{ i.image.url }}" class="img-thumbnail">
+</div>
+{% endfor %}

@@ -1,0 +1,9 @@
+{{ total_likes }} Like {{ total_likes|pluralize }}
+<form  method="POST" action="{% url 'like_article' %}">
+  {% csrf_token %}
+  {% if is_liked %}
+  <button type="submit" name="article_id" value={{ article.id }} class="btn btn-lg btn-outline-danger">Dislike</button>
+  {% else %}
+  <button type="submit" name="article_id" value={{ article.id }} class="btn btn-lg btn-outline-primary">Like</button>
+  {% endif %}
+</form>

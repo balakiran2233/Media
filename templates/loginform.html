@@ -1,0 +1,33 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <style media="screen">
+    h2{
+      color: green;
+      text-shadow: 0px 0px 2px blue,0px 0px 2px red;
+    }
+    input[value]{
+      margin-top: 10px;
+    }
+  </style>
+  <body>
+    <h2 class="text-center font-weight-bold">Login Here..</h2>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="offset-md-4 col-md-4">
+          <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <center>
+            <input type="Submit" value="Login" class="btn btn-lg btn-outline-secondary">
+            <input type="reset" value="Clear" class="btn btn-lg btn-outline-primary">
+            </center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

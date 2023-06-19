@@ -1,0 +1,8 @@
+{% if article.author == request.user %}
+<div class="section_edit" style="float:right;">
+  <a href="{% url 'article_edit' article.id %}" class="btn btn-lg btn-outline-success">Edit</a>
+</div>
+<div class="section_edit" style="float:right; margin-left:10px;">
+  <a href="{% url 'article_delete' article.id %}" class="btn btn-lg btn-outline-primary">Delete</a>
+</div>
+{% endif %}

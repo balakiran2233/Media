@@ -1,0 +1,9 @@
+{% if is_favourite %}
+<a href="{% url 'favourite_article' article.id %}" class="btn btn-lg btn-outline-seconadary">
+  Favourite
+</a>
+{% else %}
+<a href="{% url 'favourite_article' article.id %}" class="btn btn-lg btn-outline-primary">
+  Not Favourite
+</a>
+{% endif %}
